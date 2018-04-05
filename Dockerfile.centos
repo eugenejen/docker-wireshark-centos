@@ -6,5 +6,6 @@ LABEL maintaner="ltreugene@gmail.com"
 ADD centos_build.sh /
 RUN bash -x ./centos_build.sh
 
-# RUN wget http://www.tcpdump.org/release/libpcap-1.8.1.tar.gz
-# RUN tar zxvf libpcap-1.8.1.tar.gz
+VOLUME ["/data", "/scripts"]
+RUN rm ./centos_build.sh
+WORKDIR "/root"

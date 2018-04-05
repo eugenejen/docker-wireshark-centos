@@ -1,9 +1,10 @@
 #!/bin/sh -x
 
 yum install -y gcc  gcc-c++ gdb bison flex byacc make file perl automake libtool
-yum install -y wget bzip2 bzip2-devel zlib zlib-devel gettext-devel
+yum install -y wget bzip2 zlib readline centos-release-scl
+yum install -y bzip2-devel zlib-devel gettext-devel
 yum install -y gnutls-devel libxml2-devel GeoIP-devel
-yum install -y readline readline-devel centos-release-scl
+yum install -y readline-devel 
 yum install -y openssl-devel krb5-devel snappy-devel c-ares-devel 
 yum install -y libnl-devel libnl3-devel libsmi-devel libssh-devel
 
@@ -123,3 +124,9 @@ make -j 8
 make install
 popd || exit 1
 rm -rf ./wireshark*
+
+# remove build required items
+yum install -y net-tools
+yum install -y tcpdump
+yum erase -y gcc  gcc-c++ gdb bison flex byacc make automake libtool
+
