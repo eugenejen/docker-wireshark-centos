@@ -87,7 +87,11 @@ pushd lz4-1.8.1.2 || exit 1
 make
 make install
 cp lib/liblz4.a /usr/lib64
-cp lib/liblz4.so* /usr/lib64
+cp lib/liblz4.so /usr/lib64
+pushd /usr/lib64 || exit 1
+ln -s liblz4.so liblz4.so.1
+ln -s liblz4.so liblz4.so.1.8.1
+popd || exit 1
 popd || exit 1
 rm -rf ./*1.8.1.2*
 
